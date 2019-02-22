@@ -22,6 +22,13 @@ namespace MyShop.DataAccess.InMemory
             }
         }
 
+
+        public IQueryable<Product> Colection()
+        {
+            return products.AsQueryable();
+        }
+
+
         public void Commit()
         {
             cache["products"] = products;
@@ -32,6 +39,7 @@ namespace MyShop.DataAccess.InMemory
         {
             products.Add(product);
         }
+
 
         public void Update(Product product)
         {
@@ -47,6 +55,7 @@ namespace MyShop.DataAccess.InMemory
             }
         }
 
+
         public Product Find(string Id)
         {
             Product productToFind = products.Find(p => p.Id == Id);
@@ -61,10 +70,7 @@ namespace MyShop.DataAccess.InMemory
             }
         }
 
-        public IQueryable<Product> Colection()
-        {
-            return products.AsQueryable();
-        }
+
 
         public void Delete(string Id)
         {

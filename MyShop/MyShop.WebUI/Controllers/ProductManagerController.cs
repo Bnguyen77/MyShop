@@ -20,12 +20,14 @@ namespace MyShop.WebUI.Controllers
             productCategories = new ProductCategoryRepository();
         }
 
+
         // GET: ProductManager
         public ActionResult Index()
         {
             List<Product> products = context.Colection().ToList();
             return View(products);
         }
+
 
         public ActionResult Create()
         {
@@ -35,6 +37,7 @@ namespace MyShop.WebUI.Controllers
             viewModel.ProductCategories = productCategories.Colection();
             return View(viewModel);
         }
+
 
         [HttpPost]
         public ActionResult Create(Product product)
@@ -52,6 +55,7 @@ namespace MyShop.WebUI.Controllers
             }
         }
 
+
         public ActionResult Edit(string Id)
         {
             Product product = context.Find(Id);
@@ -67,6 +71,7 @@ namespace MyShop.WebUI.Controllers
                 return View(viewModel);
             }
         }
+
 
         [HttpPost]
         public ActionResult Edit(Product product, string Id)
@@ -97,6 +102,7 @@ namespace MyShop.WebUI.Controllers
             }
         }
 
+
         public ActionResult Delete(string Id)
         {
             Product productToDelete = context.Find(Id);
@@ -109,6 +115,7 @@ namespace MyShop.WebUI.Controllers
                 return View(productToDelete);
             }
         }
+
 
         [HttpPost]
         [ActionName("Delete")]

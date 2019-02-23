@@ -32,19 +32,19 @@
         <td>
             <img class="img-thumbnail" style="height:50px" src="~/Content/ProductImages/@item.Image" />
         </td>
-        <td class="align-middle">
+        <td class="v-center">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td class="align-middle">
+        <td class="v-center">
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td class="align-middle">
+        <td class="v-center">
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td class="align-middle">
+        <td class="v-center">
             @Html.DisplayFor(modelItem => item.Category)
         </td>
-        <td class="align-middle">
+        <td class="v-center">
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>

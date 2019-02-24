@@ -19,10 +19,10 @@ namespace MyShop.Services
 
         public const string BasketSessionName = "eCommerceBasket";
 
-        public BasketService(IRepository<Product> productContext, IRepository<Basket> basketContext)
+        public BasketService(IRepository<Product> ProductContext, IRepository<Basket> BasketContext)
         {
-            this.productContext = productContext;
-            this.basketContext = basketContext;
+            this.productContext = ProductContext;
+            this.basketContext = BasketContext;
         }
 
 
@@ -48,6 +48,14 @@ namespace MyShop.Services
                     }
                 }
             }
+            else
+            {
+                if (createIfNull)
+                {
+                    basket = CreateNewBasket(httpContext);
+                }
+            }
+
             return basket;
         }
 
@@ -104,6 +112,7 @@ namespace MyShop.Services
         public List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContext)
         {
             Basket basket = GetBasket(httpContext, false);
+
             if(basket != null)
             {
                 var results = (from b in basket.BasketItems
@@ -112,7 +121,7 @@ namespace MyShop.Services
                               select new BasketItemViewModel()
                               {
                                   Id = b.Id,
-                                  Quanity = b.Quantity,
+                                  Quantity = b.Quantity,
                                   ProductName = p.Name,
                                   Image = p.Image,
                                   Price = p.Price
